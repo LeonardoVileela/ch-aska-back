@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/chaska?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    rest:
+      base-path: /api
+      default-media-type: application/json
+        
+
