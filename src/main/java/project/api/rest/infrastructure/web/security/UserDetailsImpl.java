@@ -6,8 +6,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-
 import project.api.rest.domain.user.AppUser;
 //transforma meu appUser em UserDatails para que eu posso fazer a comparação e achar o ususario no banco
 public class UserDetailsImpl implements UserDetails{

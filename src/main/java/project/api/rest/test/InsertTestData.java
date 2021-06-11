@@ -22,7 +22,7 @@ public class InsertTestData {
 	@EventListener
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		AppUser appUser = new AppUser("yuumi", encoder.encode("123"), true);
+		AppUser appUser = new AppUser("admin", encoder.encode("123"), true);
 		AppUser appUserDB = appUSerRepository.findByUsername(appUser.getUsername());
 		boolean duplicate = false;
 

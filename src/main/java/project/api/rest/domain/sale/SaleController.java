@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
@@ -75,24 +76,20 @@ public class SaleController {
 	}
 
 	@PostMapping("/api/sales")
-	public Sale createSale(@RequestBody Object sale) {
-		String saleString = sale.toString();
-		saleString = saleString.substring(1, saleString.length() - 1);
-		String vet[] = saleString.split(",", 2);
+	public Sale createSale(@RequestBody LinkedHashMap<String, Object> sale) {
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<String> productsVet = (ArrayList<String>) sale.get("products");
 
-		Optional<Client> client = clientRepository.findById(Long.parseLong(vet[0].split("=")[1].trim()));
+		Optional<Client> client = clientRepository.findById(Long.parseLong((String) sale.get("client")));
 		Client client2 = client.get();
 
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		AppUser appUser = appUserRepository.findByUsername(username);
 
-		String vet2 = vet[1].trim();
-		String vet3[] = vet2.split("=", 0);
-		String products = vet3[1].substring(1, vet3[1].length() - 1);
-		String productsVet[] = products.split(",");
 		List<Product> listProduct = new ArrayList<>();
-		for (int i = 0; i < productsVet.length; i++) {
-			Optional<Product> product = productRepository.findById(Long.parseLong(productsVet[i].trim()));
+		for (int i = 0; i < productsVet.size(); i++) {
+			Optional<Product> product = productRepository.findById(Long.parseLong(productsVet.get(i)));
 			Product product2 = product.get();
 			listProduct.add(product2);
 		}
@@ -215,7 +212,7 @@ public class SaleController {
 				positive = false;
 			}
 
-		} else if (cont == cont2) {
+		} else if (cont == 0.0 && cont2 == 0.0) {
 			result = 0.0;
 			positive = true;
 		}
