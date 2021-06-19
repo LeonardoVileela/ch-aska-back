@@ -10,7 +10,7 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 * Você deve possuir a  versão 16 do jdk instalado.
 * Você deve possuir uma máquina Linux ou Windows (Lembrando que o sistema foi feito todo em Windows).
 * É recomendado possuir o editor Spring Tool Suite.
-* Você deve ler o https://spring.io/ dos termos de uso do React.
+* Você deve ler o https://spring.io/ dos termos de uso do Spring.
 
 ## Como executar
 
