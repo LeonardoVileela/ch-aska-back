@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import project.api.rest.domain.user.AppUser;
 import project.api.rest.domain.user.AppUserRepository;
 
-//classe para buscar e comparar o usuario e caso ele não exista retorna uma exception
+//classe para buscar e comparar o usuario e caso ele nao exista retorna uma exception
 @Service
 public class UserDetailsServiceimpl implements UserDetailsService {
 

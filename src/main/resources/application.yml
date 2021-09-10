@@ -1,11 +1,10 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/chaska?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
-    username: root
-    password: 
+    url: postgres://qyfoxhsnhtzhub:63adda8901558d3dbb1cb4b4f1687f5d043751434892d2a236782d85dea11024@ec2-44-197-94-126.compute-1.amazonaws.com:5432/d3fr5o1bvu1jlq
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
   data:
     rest:
       base-path: /api

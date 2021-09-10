@@ -2,7 +2,7 @@ package project.api.rest.infrastructure.web;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
-//padroniza mensagem de erros em requisições
+//padroniza mensagem de erros em requisicoes
 public class RestResponseError {
 
 	private String error;

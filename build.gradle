@@ -37,7 +37,9 @@ dependencies {
 	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'org.postgresql:postgresql'
+	//runtimeOnly 'mysql:mysql-connector-java'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -45,13 +47,8 @@ test {
 	useJUnitPlatform()
 }
 
-task buildDocker (type:Docker, dependsOn: build) {
-	applicationName = jar.baseName
-	dockerfile = file('Dockerfile')
-	doFirst {
-		copy {
-			from jar
-			into stageDir
-		}
+jar {
+	manifest {
+		attributes "Main-Class": "project.api.rest.WakeUpBackApplication"
 	}
 }

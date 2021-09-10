@@ -28,16 +28,16 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		this.authenticationManager = authenticationManager;
 	}
 
-	// método que faz a autenticação pra ver se o login e senha são válidos
+	// metodo que faz a autenticacao pra ver se o login e senha sao validos
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 
 		try {
-			// ObjectMapper é responsavel por converter objetos em json e vice versa
+			// ObjectMapper ï¿½ responsavel por converter objetos em json e vice versa
 			ObjectMapper mapper = new ObjectMapper();
 			AppUser appUser = mapper.readValue(request.getInputStream(), AppUser.class);
-			// aqui estou fazendo a autenticação, pra ver se o login e senha são corretos
+			// aqui estou fazendo a autenticaï¿½ï¿½o, pra ver se o login e senha sï¿½o corretos
 			UsernamePasswordAuthenticationToken upta = new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword());
 			return authenticationManager.authenticate(upta);
 
@@ -46,21 +46,21 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		}
 	}
 	
-	//método para caso a autenticação seja um sucesso
+	//mï¿½todo para caso a autenticaï¿½ï¿½o seja um sucesso
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 		
-		//objeto userDetails que tem todas as informçãoes da class AppUser
+		//objeto userDetails que tem todas as informï¿½ï¿½oes da class AppUser
 		UserDetailsImpl userDetails = (UserDetailsImpl) authResult.getPrincipal();
 		
-		//informações que vão dentro do token
+		//informaï¿½ï¿½es que vï¿½o dentro do token
 		String jwtToken = Jwts.builder()
 			.setSubject(userDetails.getUsername())//setando o user name no token
-			.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))//setando o tempo de expiração do token
+			.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))//setando o tempo de expiraï¿½ï¿½o do token
 			.claim("admin", userDetails.getAdmin())
 			.claim("username", userDetails.getUsername())
-			.claim("id", userDetails.getId())//aqui vai as informações adicionais do token, aqui posso enviar se o usuario é administrador ou não pelo token, pra bloquear as telas no front
+			.claim("id", userDetails.getId())//aqui vai as informaï¿½ï¿½es adicionais do token, aqui posso enviar se o usuario ï¿½ administrador ou nï¿½o pelo token, pra bloquear as telas no front
 			.signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET_KEY)//algoritmo de criptografia e a senha secreta do token
 			.compact();
 		

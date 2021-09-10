@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import project.api.rest.domain.user.AppUser;
-//transforma meu appUser em UserDatails para que eu posso fazer a comparação e achar o ususario no banco
+//transforma meu appUser em UserDatails para que eu posso fazer a comparacao e achar o ususario no banco
 public class UserDetailsImpl implements UserDetails{
 
 	/**
@@ -43,7 +43,7 @@ public class UserDetailsImpl implements UserDetails{
 		return this.username;
 	}
 
-	//configurações abaixo são para conta expiradas ou bloqueadas ou algo do tipo
+	//configuraï¿½ï¿½es abaixo sï¿½o para conta expiradas ou bloqueadas ou algo do tipo
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;

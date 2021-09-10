@@ -9,7 +9,7 @@ import project.api.rest.domain.client.Client;
 import project.api.rest.domain.product.Product;
 import project.api.rest.domain.user.AppUser;
 
-//classe para configurações
+//classe para configuracoes
 @Configuration
 public class ConfigRepositoryRest implements RepositoryRestConfigurer {
 
@@ -17,11 +17,11 @@ public class ConfigRepositoryRest implements RepositoryRestConfigurer {
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 		// config.exposeIdsFor(Task.class);
 		config.exposeIdsFor(AppUser.class, Product.class, Client.class);
-		// Liberar api para front end que está em outro
-		// resolução do problema do projeto da fabrica
+		// Liberar api para front end que esta em outro
+		// resolucao do problema do projeto da fabrica
 		cors.addMapping("/**")// end points liberados
 				.allowedOrigins("*")// posso restringir a ip ou algum client
-				.allowedMethods("GET", "POST", "PUT", "DELETE");// Métodos liberados
+				.allowedMethods("GET", "POST", "PUT", "DELETE");// Metodos liberados
 	}
 
 }
