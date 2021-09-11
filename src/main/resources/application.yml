@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: postgres://qyfoxhsnhtzhub:63adda8901558d3dbb1cb4b4f1687f5d043751434892d2a236782d85dea11024@ec2-44-197-94-126.compute-1.amazonaws.com:5432/d3fr5o1bvu1jlq
+    url:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
